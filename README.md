@@ -1,9 +1,9 @@
 # Epitranscriptome Course Bari 26-28-April-2023
 <a href="mailto:ernesto.picardi@uniba.it ">Ernesto Picardi</a><br>
-<a href="mailto:claudio.logiudice@uniba.it ">Claudio Lo Giudice</a>
-<a href="mailto:adriano.fonzino@uniba.it "> Adriano Fonzino</a>
-<a href="mailto:pietro.daddabbo@uniba.it "> Pietro D’Addabbo</a>
-<a href="mailto:silvestris@alice.it "> Alessandro Silvestris</a>
+<a href="mailto:claudio.logiudice@uniba.it ">Claudio Lo Giudice</a><br>
+<a href="mailto:adriano.fonzino@uniba.it "> Adriano Fonzino</a><br>
+<a href="mailto:pietro.daddabbo@uniba.it "> Pietro D’Addabbo</a><br>
+<a href="mailto:silvestris@alice.it "> Alessandro Silvestris</a><br>
 
 <p align="justify"> Epitranscriptome refers to all biochemical RNA modifications affecting cellular RNAs. 
 To date, >150 different RNA modifications have been discovered, and, among them, RNA editing represents the most prominent post-transcriptional mechanism.<br> 
