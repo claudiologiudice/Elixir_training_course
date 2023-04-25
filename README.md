@@ -1,9 +1,10 @@
 # Epitranscriptome Course Bari 26-28-April-2023 (PRACTICAL PART)
 <img src="https://github.com/claudiologiudice/Elixir_training_course/blob/main/img.png"></img>
+<a href="mailto:graziano.pesole@uniba.it ">Graziano Pesole</a><br>
 <a href="mailto:ernesto.picardi@uniba.it ">Ernesto Picardi</a><br>
-<a href="mailto:claudio.logiudice@uniba.it ">Claudio Lo Giudice</a><br>
-<a href="mailto:adriano.fonzino@uniba.it "> Adriano Fonzino</a><br>
+<a href="mailto:claudio.logiudice@uniba.it "> Claudio Lo Giudice</a><br>
 <a href="mailto:pietro.daddabbo@uniba.it "> Pietro D’Addabbo</a><br>
+<a href="mailto:adriano.fonzino@uniba.it "> Adriano Fonzino</a><br>
 <a href="mailto:silvestris@alice.it "> Alessandro Silvestris</a><br>
 
 <p align="justify"> Epitranscriptome refers to all biochemical RNA modifications affecting cellular RNAs. 
