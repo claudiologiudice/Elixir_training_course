@@ -1,4 +1,4 @@
-# EPITRAN workshop -RNA Editing 24/06/21
+# Epitranscriptome Course Bari 26-28-April-2023
 <a href="mailto:ernesto.picardi@uniba.it ">Ernesto Picardi</a><br>
 <a href="mailto:claudio.logiudice@uniba.it ">Claudio Lo Giudice</a>
 <p align="justify"> Epitranscriptome refers to all biochemical RNA modifications affecting cellular RNAs. 
@@ -12,14 +12,10 @@ To promote and facilitate the investigation of RNA editing at genomic scale, we 
 It comprises a suite of python scripts has been conceived to handle massive transcriptome sequencing data through a variety of filters to provide accurate RNA editing calls.<br>
 Reditools have been applied in thousands of human RNAseq experiments, leading to the discovery of >16 million events in several human body sites, collected in our specialized <b>REDIportal</b> database.<br>
 REDItools and REDIportal represent two relevant and efficient computational resources to investigate RNA editing in a variety of organisms and in different physiological and pathological conditions.<br> 
-Today, we are going to reproduce step-by-step a bioinformatics pipeline aimed to study A-to-I editing in human samples, combininig both Reditools and Rediportal information.<br>
+Today morning we are going to reproduce step-by-step a bioinformatics pipeline aimed to study A-to-I editing in human samples, combininig both Reditools and Rediportal information.<br>
 <ul>
-<li>During the morning we will start with exploring the REDIportal database and we will conclude our practice by obtaining the annotated editing events for two genes GRIA2 and FLNA. These data will by used as input for one of the script embedded with the REDItools package to explore the RNA editing potential of two different RNA-Seq data sets using known editing events.
-<a href="https://github.com/BioinfoUNIBA/epitran/blob/main/Rediportal.md">Morning<a><br>
-</li>
-<li>Finally, during the afternoon, we will illustrate a computational workflow to discover novel RNA editing events using RNAseq and WGS reads from the same sample.
-<a href="https://github.com/BioinfoUNIBA/epitran/blob/main/reditoolsdnarna.md">Afternoon</a>
-
+<li>In particular, during this morning, we will illustrate a computational workflow to discover novel RNA editing events using RNAseq data.
+<a href="https://github.com/BioinfoUNIBA/epitran/blob/main/reditoolsdnarna.md">28_04_23</a>
   </li>
 </ul>
 </p>
