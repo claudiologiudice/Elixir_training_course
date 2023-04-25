@@ -1,6 +1,10 @@
 # Epitranscriptome Course Bari 26-28-April-2023
 <a href="mailto:ernesto.picardi@uniba.it ">Ernesto Picardi</a><br>
 <a href="mailto:claudio.logiudice@uniba.it ">Claudio Lo Giudice</a>
+<a href="mailto:adriano.fonzino@uniba.it "> Adriano Fonzino</a>
+<a href="mailto:pietro.daddabbo@uniba.it "> Pietro D’Addabbo</a>
+<a href="mailto:silvestris@alice.it "> Alessandro Silvestris</a>
+
 <p align="justify"> Epitranscriptome refers to all biochemical RNA modifications affecting cellular RNAs. 
 To date, >150 different RNA modifications have been discovered, and, among them, RNA editing represents the most prominent post-transcriptional mechanism.<br> 
 In mammals, it involves the deamination of cytosine to uridine or, more commonly, the conversion of adenosine to inosine (A-to-I) and, concurrently with alternative splicing, increases the diversity of the eukaryotic transcriptome and proteome.<br>
