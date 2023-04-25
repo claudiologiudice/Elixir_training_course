@@ -1,5 +1,5 @@
 # Epitranscriptome Course Bari 26-28-April-2023
-<img></img>
+<img src="https://github.com/claudiologiudice/Elixir_training_course/blob/main/img.png"></img>
 <a href="mailto:ernesto.picardi@uniba.it ">Ernesto Picardi</a><br>
 <a href="mailto:claudio.logiudice@uniba.it ">Claudio Lo Giudice</a><br>
 <a href="mailto:adriano.fonzino@uniba.it "> Adriano Fonzino</a><br>
