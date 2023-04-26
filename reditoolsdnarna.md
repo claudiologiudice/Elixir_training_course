@@ -9,7 +9,8 @@ sequencing or read-mapping errors.<br>
 The use of genomic reads from whole genome sequencing (WGS) or whole exome sequencing (WXS) experiments in single individuals, annotations in the
 database of SNPs (dbSNP) and several stringent ﬁlters can minimize the detection of false RNA editing candidates. <br>
 The entire procedure is human speciﬁc but can be applied to other organisms
-with available transcriptomic and genomic reads. The detection of RNA editing is carried out by our
+with available transcriptomic and genomic reads. <br> 
+The detection of RNA editing is carried out by our
 REDItools package, which is able to handle RNAseq data alone or combine RNAseq and genomic
 reads from WGS or WXS experiments to reduce the false discovery rate due to SNPs.
 </p>
