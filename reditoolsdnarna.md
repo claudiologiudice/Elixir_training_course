@@ -13,11 +13,13 @@ with available transcriptomic and genomic reads. <br>
 The detection of RNA editing is carried out by our
 REDItools package, which is able to handle RNAseq data alone or combine RNAseq and genomic
 reads from WGS or WXS experiments to reduce the false discovery rate due to SNPs.<br>
-The ﬁrst procedure begins with the download of RNAseq and WGS data in the standard fastq
-format (Fig. 1, stage 1) and the subsequent preprocessing to improve their global quality and ensure
-that input raw data are not biased (Fig. 1, stage 2). To this aim, collected reads are inspected using
+The main procedure begins with the download of RNAseq and WGS data in the standard fastq
+format and the subsequent preprocessing to improve their global quality and ensure
+that input raw data are not biased. To this aim, collected reads are inspected using
 FASTQC (https://github.com/s-andrews/FastQC) to perform some quality control checks and cleaned
 using FASTP 23 to remove read regions of low quality or potential adaptor sequences or poly(A)-tails
 (or long terminal homopolymeric stretches).
+  
+<img src=""></img>
 </p>
 
