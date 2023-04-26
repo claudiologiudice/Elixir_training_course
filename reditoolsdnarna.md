@@ -48,10 +48,9 @@ remaining positions are divided according to RepeatMasker annotations in three g
 NON ALU and NON REP.</li>
   <li>NON REP and REP NON ALU variants undergo a second round of REDItoolDnaRna.py
 using more stringent call criteria than their counterparts in ALU regions. <br>
-  In addition, reads supporting variants are collected and mapped onto the reference genome using PBLAT, a faster version
-  of the classical BLAT tool , to detect reads mapping on multiple genome locations with similar
-  scores. 
-    <br> The same reads are also inspected to exclude PCR duplication. At the end, all ﬁltered positions
+  <li> In addition, reads supporting variants are collected and mapped onto the reference genome using PBLAT, a faster version
+  of the classical BLAT tool , to detect reads mapping on multiple genome locations with similar scores. </li> 
+  <li> The same reads are also inspected to exclude PCR duplication. At the end, all ﬁltered positions
 are collected, returning the ﬁnal list of RNA editing candidates.</li>
   </ul>
 
