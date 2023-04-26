@@ -38,6 +38,15 @@ cases in which a user needs to run multiple instances of REDItools with differen
 At the end of the REDItoolDnaRna.py script run, all DNA–RNA variants are returned in a simple and tab-delimited table
 and subjected to further ﬁlters according to the workﬂow depicted here:<br>
 <img src="img3.png"></img>
+<br>
+<ul>
+  <li>Brieﬂy, positions from the ﬁrst REDItools round are annotated by means of the AnnotateTable.
+py script using known SNP sites, repeated elements in RepeatMasker and editing events stored in our
+REDIportal database.</li>
+  <li>Then, SNPs (and sites not supported by ≥10 WGS reads) are removed, and the
+remaining positions are divided according to RepeatMasker annotations in three groups: ALU, REP
+NON ALU and NON REP.</li>
+  </ul>
 
 
   
