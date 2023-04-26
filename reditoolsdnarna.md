@@ -35,6 +35,11 @@ using non-stringent parameters to identify all potential DNA–RNA variants. <br
 loosing parameters, deﬁned as <b>basic ﬁlters</b>, is an expedient to <b>save computing time</b> in all
 cases in which a user needs to run multiple instances of REDItools with different option values.</b></li>
 
+At the end of the REDItoolDnaRna.py script run, all DNA–RNA variants are returned in a simple and tab-delimited table
+and subjected to further ﬁlters according to the workﬂow depicted here:<br>
+<img src="img3.png"></img>
+
+
   
 </p>
 
