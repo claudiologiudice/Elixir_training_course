@@ -24,3 +24,4 @@ using FASTP 23 to remove read regions of low quality or potential adaptor sequen
 <img src="https://github.com/claudiologiudice/Elixir_training_course/blob/main/img1.png"></img>
 </p>
 
+
