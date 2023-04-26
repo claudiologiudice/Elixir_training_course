@@ -21,7 +21,7 @@ using FASTP 23 to remove read regions of low quality or potential adaptor sequen
 (or long terminal homopolymeric stretches).
   
   
-<img src="https://github.com/claudiologiudice/Elixir_training_course/blob/main/img1.png"></img>
+<img src="img1.png"></img>
 </p>
 
 
