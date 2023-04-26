@@ -20,6 +20,6 @@ FASTQC (https://github.com/s-andrews/FastQC) to perform some quality control che
 using FASTP 23 to remove read regions of low quality or potential adaptor sequences or poly(A)-tails
 (or long terminal homopolymeric stretches).
   
-<img src=""></img>
+<img src="https://github.com/claudiologiudice/Elixir_training_course/blob/main/img1.png"></img>
 </p>
 
