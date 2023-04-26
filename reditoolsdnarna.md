@@ -17,10 +17,14 @@ reads from WGS or WXS experiments to reduce the false discovery rate due to SNPs
 <ul>
 <li>The main procedure begins with the download of RNAseq and WGS data in the standard fastq
 format and the subsequent preprocessing to improve their global quality and ensure
-that input raw data are not biased. To this aim, collected reads are inspected using
+that input raw data are not biased.</li> 
+<li>To this aim, collected reads are inspected using
 FASTQC (https://github.com/s-andrews/FastQC) to perform some quality control checks and cleaned
 using FASTP to remove read regions of low quality or potential adaptor sequences or poly(A)-tails
 (or long terminal homopolymeric stretches).</li>
+<li>Next, cleaned reads are aligned onto the reference genom. While RNAseq reads
+are mapped using STAR, an ultrafast splice-aware software, WGS reads are aligned using BWA,
+which does not take into account the spliced nature of reads.</li>
 </ul>
   
 </p>
