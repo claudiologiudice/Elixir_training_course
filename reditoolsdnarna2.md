@@ -1,17 +1,10 @@
 # Epitranscriptome Course Bari 28-April-2023 
 <p> 
 The main steps described during the practice are reported below and can be easily copy/pasted in your terminal.<br>
-<b>Note.</b> Assuming you're traineeX, please change X according to your workspace.<br>
-<b>Note2.</b> Choose a GTEX sample from Cerebellum or Lung and copy DNAseq/RNAseq accordingly in your home folder.<br>
+<b>Note.</b> Assuming you're student_X, please change X according to your workspace.<br>
+<b>Note2.</b> Choose a GTEX sample from Cerebellum or Artery and copy RNAseq data accordingly in your home folder.<br>
 <b>IMPORTANT!</b> REDItoolDnaRna.py outTable (eg. outTable_892028847) contains 9digit random number, so it usually varies among users and different script launches on the same machine.<br>
-Due to multiple available versions of the core module pysam, it is possibile that some commands will return you a pysam error. <br>
-In those cases just type:
-<pre> $ conda activate rnaediting2 </pre>
-*rnaediting2 environment contains pysam=0.15.2
-<br>Type again the command that returned errors and revert to your main environment with: 
-<br><br>
-<pre> $ conda activate rnaediting </pre>
-*rnaediting envirnment contains pysam==0.7.7
+  In case of errors or techincal problems <b>do not hesitate to stop the trainer(s).</b>
 <table>
 <thead>
 <th>Sample</th>
