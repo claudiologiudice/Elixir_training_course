@@ -28,11 +28,12 @@ which does not take into account the spliced nature of reads.</li>
 transcriptome and genome reads are converted in the standard BAM format using SAMtools. <br>
 Unlike BWA, STAR parameters can be tuned to directly output reads in BAM format,
 saving time and avoiding SAMtools calls.</li>
+  
 <img src="img2.png"></img>
 After the preprocessing, RNAseq and WGS reads are passed to the REDItoolDnaRna.py script
-using non-stringent parameters to identify all potential DNA–RNA variants (Fig. 2). The use of
+using non-stringent parameters to identify all potential DNA–RNA variants. <br><b>The use of
 loosing parameters, deﬁned as basic ﬁlters in Fig. 2, is an expedient to save computing time in all
-cases in which a user needs to run multiple instances of REDItools with different option values.</li>
+cases in which a user needs to run multiple instances of REDItools with different option values.</b></li>
 
   
 </p>
