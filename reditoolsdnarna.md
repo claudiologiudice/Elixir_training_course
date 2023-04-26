@@ -53,7 +53,7 @@ using more stringent call criteria than their counterparts in ALU regions. <br>
   <li> The same reads are also inspected to exclude PCR duplication. At the end, all ﬁltered positions
 are collected, returning the ﬁnal list of RNA editing candidates.</li>
   </ul>
-<div style="text-align:right display:inline;"><a href="https://github.com/claudiologiudice/Elixir_training_course/blob/main/reditoolsdnarna2.md"> NEXT </a></div>
+<p style="text-align:right display:inline;"><a href="https://github.com/claudiologiudice/Elixir_training_course/blob/main/reditoolsdnarna2.md"> NEXT </a><p>
 </p>
 
 
