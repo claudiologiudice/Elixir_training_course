@@ -1,6 +1,7 @@
 # Epitranscriptome Course Bari 28-April-2023 
 <p> 
-The main steps described during the practice are reported below and can be easily copy/pasted in your terminal.<br>
+The main steps described during the practice are reported below and can be easily copy/pasted in your terminal <br>
+(please remove the <b<$</b> simbol during copy&paste.<br>
 <b>Note.</b> Assuming you're student_X, please change X according to your workspace.<br>
 <b>Note2.</b> Choose a GTEX sample from Cerebellum or Artery and copy RNAseq data accordingly in your home folder.<br>
 <b>IMPORTANT!</b> REDItoolDnaRna.py outTable (eg. outTable_892028847) contains 9digit random number, so it usually varies among users and different script launches on the same machine.<br>
