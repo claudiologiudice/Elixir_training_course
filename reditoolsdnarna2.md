@@ -96,7 +96,7 @@ For detailed selectPositions.py options <a href="https://github.com/BioinfoUNIBA
 
 <b>10) Create a second set of positions selecting sites supported by ≥10 RNAseq reads, three mismatches and minimum editing frequency of 0.1: </b>
 
-$ selectPositions.py -i outTable_892028847_chr21.out.rmsk.snp -c 10 -v 3 -f 0.1  -o outTable_892028847_chr21.out.rmsk.snp.sel2
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/selectPositions.py -i outTable_XXXXXX.out.rmsk.snp -c 10 -v 3 -f 0.1 -o outTable_XXXXXX.out.rmsk.snp.sel2
 
 <b>11) Select ALU sites from the first set of positions:</b>
 
