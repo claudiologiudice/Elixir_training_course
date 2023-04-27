@@ -55,35 +55,34 @@ The main steps described during the practice are reported below and can be easil
 </p>
 
 <pre>
-<b>1) Create a folder for your RNAseq data (eg. RNAseq)</b>
+<b>1) Create a folder for your RNAseq data (eg. RNAseq) in your home folder (eg. student_X)</b>
 $ mkdir RNAseq
 
-<b>2) Copy the RNAseq data inside it</b>
-$ cp ../data/rnaediting/lung/RNAseq_fq/SRR1310520_r* .
+<b>2) Enter the folder and copy the Aligned RNAseq reads (BAM format) from /data to it</b>
+$ cp /data/brain/SRRXXXXXXXX/SRRXXXXXXXX.bam* .
+e.g (SRR1086680)
 
-<b>3) Align RNASeq reads to the reference genome with STAR:</b>
-$ STAR --runThreadN 4   --genomeDir /usr/share/course_data/STAR_genome_index_ucsc/   --genomeLoad NoSharedMemory   --readFilesIn ./SRR1310520_r1.fastq.gz   ./SRR1310520_r2.fastq.gz  --readFilesCommand zcat  --outFileNamePrefix SRR1310520_chr21_   --outReadsUnmapped Fastx   --outSAMtype BAM   SortedByCoordinate      --outSAMstrandField intronMotif   --outSAMattributes All      --outFilterType BySJout   --outFilterMultimapNmax 1  --outFilterMismatchNmax 999   --outFilterMismatchNoverLmax 0.04   --alignIntronMin 20   --alignIntronMax 1000000  --alignMatesGapMax 1000000   --alignSJoverhangMin 8   --alignSJDBoverhangMin 1
+<b>2) Detect all potential RNA variants in your input BAM using the REDItoolDnaRNA.py script:</b>
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -o /home/student_<b>X</b>/RNAseq -i /home/student_<b>X</b>/RNAseq/SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -t 4 -c 0,1 -m 0,255 -v 1 -q 0,30 -e -n 0.0 -N 0.0 -u -l -p
 
-$cd ..
+e.g. python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -o /home/student_7/RNAseq -i /home/student_7/RNAseq/SRR1319672.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -t 4 -c 0,1 -m 0,255 -v 1 -q 0,30 -e -n 0.0 -N 0.0 -u -l -p
 
-<b>4) Create a folder for your DNAseq data (eg. DNAseq)</b>
-$ mkdir DNAseq
-
-<b>5) Copy the DNAseq data inside it</b>
-$ cp ../data/rnaediting/DNAseq/Lung* .
-
-<b>6) Detect all potential DNA–RNA variants in your data (limited to chromosome 21) using the REDItoolDnaRNA.py script:</b>
-
-$ REDItoolDnaRna.py -i ./RNAseq/SRR1310520_chr21_Aligned.sortedByCoord.out.bam -j ./DNAseq/Lung_sorted.bam -o editing -f /usr/share/course_data/rnaediting/hg19ref/GRCh37.primary_assembly.genome.fa  -c1,1 -m30,255 -v1 -q30,30 -e -n0.0 -N0.0 -u -l -p -s2 -g2  -S -Y chr21:1-48129895
 For detailed REDItoolDnaRna.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#reditooldnarna-py">click here</a>
 
-<b>7) Exclude invariant positions as well as positions not supported by ≥10 WGS reads:</b>
+Note. Since we are not using WGS as input, REDItoolDnaRNA.py will work as REDItoolDenovo.py, another Reditools package <br>script that has been conceived to predict potential RNA editing events using <b>RNA-Seq data alone and without any a priori <br>knowledge about genome information</b>.
 
-$ awk 'FS="\t" {if ($8!="-" && $10>=10 && $13=="-") print}' editing/DnaRna_892028847/outTable_892028847 > outTable_892028847_chr21.out
+<b>3) Exclude invariant positions (RNAseq position showing no variations respect to the genome reference):</b>
+$ awk 'FS="\t" {if ($8!="-") print}' DnaRna_XXXXXXX/outTable_XXXXXX > outTable_XXXXXX.out
+
+where $8!="-" selects only variant positions (from column 8 of the output table)
+
+<div align="center">
+<img src="img4.png"></img>
+</div>
 
 <b>8) Annotate positions using RepeatMasker and dbSNP annotations:</b>
 
-$ AnnotateTable.py -a /usr/share/course_data/rnaediting/rptmsk/rmsk_chr21.sorted.gtf.gz -n rmsk -i outTable_892028847_chr21.out -o outTable_892028847_chr21.out.rmsk -u
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/rmsk.sorted.gtf.gz -n rmsk -i outTable_XXXXXX.out -o outTable_XXXXXX.out.out.rmsk -u
 
 $ AnnotateTable.py -a /usr/share/course_data/rnaediting/dbsnp/snp151_chr21.sorted.gtf.gz -n snp151 -n snp151 -i outTable_892028847_chr21.out.rmsk -o outTable_892028847_chr21.out.rmsk.snp -u
 For detailed AnnotateTable.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#annotatetable-py">click here</a>
