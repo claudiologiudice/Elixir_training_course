@@ -160,7 +160,7 @@ $ pblat -t=dna -q=rna -stepSize=5 -repMatch=2253 -minScore=20 -minIdentity=0 /da
 
 $ ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/readPsl.py reads.psl badreads.txt
 
-<b>18) Extract RNAseq reads harboring reference mismatches from Step 19 and remove duplicates:</b>
+<b>18) Extract RNAseq reads harboring reference mismatches from Step 17 and remove duplicates:</b>
   
 $ sort -k1,1 -k2,2n -k3,3n first/DnaRna_XXXXXXX/outPosReads_XXXXXX | mergeBed > bed
 
