@@ -98,9 +98,9 @@ For detailed selectPositions.py options <a href="https://github.com/BioinfoUNIBA
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/selectPositions.py -i outTable_XXXXXX.out.rmsk.snp -c 10 -v 3 -f 0.1 -o outTable_XXXXXX.out.rmsk.snp.sel2
 
-<b>11) Select ALU sites from the first set of positions:</b>
+<b>11) Select ALU sites from the ﬁrst set of positions:</b>
 
-$ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)=="Alu" && $17=="-" && $8!="-" && $10>=10 && $13=="-") print}' outTable_892028847_chr21.out.rmsk.snp.sel1 > outTable_892028847_chr21.out.rmsk.snp.alu
+$ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)=="Alu" && $17=="-" && $8!="-") print}' outTable_XXXXXX.out.rmsk.snp.sel1 > outTable_XXXXXX.out.rmsk.snp.alu
 
 <b>12) Select REP NON ALU sites from the second set of positions, excluding sites in Simple repeats or Low complexity regions:</b>
 
