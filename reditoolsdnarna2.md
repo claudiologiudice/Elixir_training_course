@@ -85,7 +85,7 @@ where $8!="-" selects only variant positions (from column 8 of the output table)
 
 <b>5) Annotate positions using RepeatMasker and dbSNP annotations:</b>
 
-$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/rmsk.sorted.gtf.gz -n rmsk -i outTable_XXXXXX.out -o outTable_XXXXXX.out.out.rmsk -u
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/rmsk.sorted.gtf.gz -n rmsk -i outTable_XXXXXX.out -o outTable_XXXXXX.out.rmsk -u
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/snp151.sorted.gtf.gz -n snp151 -i outTable_XXXXXX.out.rmsk -o outTable_XXXXXX.out.rmsk.snp -u
 
