@@ -156,33 +156,33 @@ $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDn
 
 <b>20) Launch pblat on RNAseq reads harboring reference mismatches from previous step and select multimapping reads:</b>
 
-$ pblat -t=dna -q=rna -stepSize=5 -repMatch=2253 -minScore=20 -minIdentity=0 /usr/share/course_data/rnaediting/hg19ref/GRCh37.primary_assembly.genome.fa first/DnaRna_304977045/outReads_304977045 reads.psl
+$ pblat -t=dna -q=rna -stepSize=5 -repMatch=2253 -minScore=20 -minIdentity=0 /data/annotations/GRCh37.primary_assembly.genome.fa first/DnaRna_506544611/outReads_506544611 reads.psl
 
-$ readPsl.py reads.psl badreads.txt
+$ ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/readPsl.py reads.psl badreads.txt
 
 <b>21) Extract RNAseq reads harboring reference mismatches from Step 19 and remove duplicates:</b>
   
-$ sort -k1,1 -k2,2n -k3,3n first/DnaRna_595685947/outReads_595685947 | mergeBed > bed 
+$ sort -k1,1 -k2,2n -k3,3n first/DnaRna_XXXXXXX/outPosReads_XXXXXX | mergeBed > bed
 
-$ samtools view -@ 4 -L bed -h -b ./RNAseq/SRR1310520_chr21_Aligned.sortedByCoord.out.bam > SRR1310520_chr21_bed.bam
+$ samtools view -h -@ 4 -L bed  -b SRRXXXXXXX.bam > SRRXXXXXXX_bed.bam
 
-$ samtools sort -@ 4 -n SRR1310520_chr21_bed.bam -o SRR1310520_chr21_bed_ns.bam 
+$ samtools sort -@ 4 -n SRRXXXXXXX_bed.bam -o SRRXXXXXXX_bed_ns.bam 
 
-$ samtools fixmate -@ 4 -m SRR1310520_chr21_bed_ns.bam  SRR1310520_chr21_bed_ns_fx.bam 
+$ samtools fixmate -@ 4 -m SRRXXXXXXX_bed_ns.bam SRRXXXXXXX_bed_ns_fx.bam
 
-$ samtools sort -@ 4 SRR1310520_chr21_bed_ns_fx.bam -o SRR1310520_chr21_bed_ns_fx_st.bam
+$ samtools sort -@ 4 SRRXXXXXXX_bed_ns_fx.bam -o SRRXXXXXXX_bed_ns_fx.bam_st.bam
 
-$ samtools markdup -r -@ 4 SRR1310520_chr21_bed_ns_fx_st.bam SRR1310520_chr21_bed_dedup.bam
+$ samtools markdup -r -@ 4 SRRXXXXXXX_bed_ns_fx.bam_st.bam SRRXXXXXXX_bed_dedup.bam
 
-$ samtools index SRR1310520_chr21_bed_dedup.bam
+$ samtools index SRRXXXXXXX_bed_dedup.bam
 
 <b>22) Re-run REDItoolDnaRna.py on REP NON ALU and NON REP sites using stringent criteria, deduplicated reads and mis-mapping info:</b>
 
-$ REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRR1310520_chr21_bed_dedup.bam -f /usr/share/course_data/rnaediting/hg19ref/GRCh37.primary_assembly.genome.fa -c 10,10 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 3 -n 0.1 -e -T pos.sorted.gff.gz -w /usr/share/course_data/rnaediting/Gencode_annotation/gencode.v30lift37.chr21.splicesites.txt -R -k /usr/share/course_data/rnaediting/hg19ref/nochr -b badreads.txt --rmIndels -o second
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRRXXXXXXX_bed_dedup.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 10,10 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 3 -n 0.1 -e -T pos.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -R -k /data/annotations/nochr -b badreads.txt --rmIndels -o second
   
 <b>23) Collect filtered ALU, REP NON ALU and NON REP sites:</b>
 
-$ collect_editing_candidates.py
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/NPscripts/collect_editing_candidates.py 
 
 $ sort -k1,1 -k2,2n editing.txt > editing_sorted.txt
 
