@@ -7,7 +7,7 @@ genome-encoded single-nucleotide polymorphisms (SNPs) and technical artefacts ca
 sequencing or read-mapping errors.<br>
 The use of genomic reads from whole genome sequencing (WGS) or whole exome sequencing (WXS) experiments in single individuals, 
 annotations in the database of SNPs (dbSNP) and several stringent ﬁlters can minimize the detection of false RNA editing candidates. <br>
-The entire procedure is <b<human speciﬁc</b> but can be applied to other organisms
+The entire procedure is <b>human speciﬁc</b> but can be applied to other organisms
 with available transcriptomic and genomic reads. <br> 
 The detection of RNA editing is carried out by our
 REDItools package, which is able to handle RNAseq data alone or combine RNAseq and genomic
