@@ -43,6 +43,7 @@ and subjected to further ﬁlters according to the workﬂow depicted here:<br>
   <li>Brieﬂy, positions from the ﬁrst REDItools round are annotated by means of the AnnotateTable.
 py script using known SNP sites, repeated elements in RepeatMasker and editing events stored in our
 REDIportal database.</li>
+  <img src="img5.png"</img>
   <li>Then, SNPs (and sites not supported by ≥10 WGS reads) are removed, and the
 remaining positions are divided according to RepeatMasker annotations in three groups: ALU, REP
 NON ALU and NON REP.</li>
