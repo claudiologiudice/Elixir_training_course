@@ -44,10 +44,10 @@ The main steps described during the practice are reported below and can be easil
 </tr>
 </tr>
 <tr>
-<td>SRR1319672.bam</td>
+<!--td>SRR1319672.bam</td>
 <td>Brain - Cerebellum</td>
 <td>male normal</td>
-<td>/data/brain/SRR1319672/SRR1319672.bam</td>
+<td>/data/brain/SRR1319672/SRR1319672.bam</td-->
 </tr>  
 </thead>
 </table>
@@ -112,19 +112,19 @@ $ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)!="Alu" && $15=="-" && $17=="-"
 
 <b>14) Annotate ALU, REP NON ALU and NON REP sites using known editing events from REDIportal:</b>
 
-$ AnnotateTable.py -a /usr/share/course_data/rnaediting/rediportal/atlas.gtf.gz -n ed -k R  -c 1 -i outTable_892028847_chr21.out.rmsk.snp.alu -o outTable_892028847_chr21.out.rmsk.snp.alu.ed -u
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/atlas.gtf.gz -n ed -k R -c 1 -i outTable_XXXXXX.out.rmsk.snp.alu -o outTable_XXXXXX.out.rmsk.snp.alu.ed -u
 
-$ AnnotateTable.py -a /usr/share/course_data/rnaediting/rediportal/atlas.gtf.gz -n ed -k R  -c 1 -i outTable_892028847_chr21.out.rmsk.snp.nonalu -o outTable_892028847_chr21.out.rmsk.snp.nonalu.ed -u
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/atlas.gtf.gz -n ed -k R -c 1 -i outTable_XXXXXX.out.rmsk.snp.nonalu -o outTable_XXXXXX.out.rmsk.snp.nonalu.ed -u
 
-$ AnnotateTable.py -a /usr/share/course_data/rnaediting/rediportal/atlas.gtf.gz -n ed -k R  -c 1 -i outTable_892028847_chr21.out.rmsk.snp.nonrep -o outTable_892028847_chr21.out.rmsk.snp.nonrep.ed -u
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/atlas.gtf.gz -n ed -k R -c 1 -i outTable_XXXXXX.out.rmsk.snp.nonrep -o outTable_XXXXXX.out.rmsk.snp.nonrep.ed -u
 
-<b>15) Extract known editing events from ALU, REP NON ALU and NON REP sites:</b>
+<b>15) Extract known editing events ($19=="ed" selects known RNA editing events) from ALU, REP NON ALU and NON REP sites:</b>
 
-$ mv outTable_892028847_chr21.out.rmsk.snp.alu.ed alu
+$ mv outTable_XXXXXX.out.rmsk.snp.alu.ed alu
 
-$ mv outTable_892028847_chr21.out.rmsk.snp.nonalu.ed nonalu
+$ mv outTable_XXXXXX.out.rmsk.snp.nonalu.ed nonalu
 
-$ mv outTable_892028847_chr21.out.rmsk.snp.nonrep.ed nonrep
+$ mv outTable_XXXXXX.out.rmsk.snp.nonrep.ed nonrep
 
 $ cat alu nonalu nonrep > alu-nonalu-nonrep
 
@@ -136,18 +136,19 @@ $ cat nonalu nonrep > nonalu-nonrep
 
 $ awk 'FS="\t" {if ($19!="ed") print}' nonalu-nonrep > pos.txt
 
-$TableToGFF.py -i pos.txt -s -t -o pos.gff
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/TableToGFF.py -i pos.txt -s -t -o pos.gff
+
 For detailed TableToGFF.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#tabletogff-py-new-in-version-1-0-3">click here</a>
 
 <b>17) Convert editing candidates in ALU sites in GFF format for further filtering:</b>
 
 $ awk 'FS="\t" {if ($19!="ed") print}' alu > posalu.txt
 
-$ TableToGFF.py -i posalu.txt -s -t -o posalu.gff
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/TableToGFF.py -i posalu.txt -s -t -o posalu.gff
 
 <b>18) Launch REDItoolDnaRna.py on ALU sites using stringent criteria to recover potential editing candidates:</b>
 
-$ REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i ./RNAseq/SRR1310520_chr21_Aligned.sortedByCoord.out.bam -f /usr/share/course_data/rnaediting/hg19ref/GRCh37.primary_assembly.genome.fa -c 5,5 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 1 -n 0.0 -e -T posalu.sorted.gff.gz -w /usr/share/course_data/rnaediting/Gencode_annotation/gencode.v30lift37.chr21.splicesites.txt -k /usr/share/course_data/rnaediting/hg19ref/nochr -R -o firstalu
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRR1319672.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 5,5 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 1 -n 0.0 -e -T posalu.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -k /data/annotations/nochr -R -o firstalu
 
 <b>19) Launch REDItoolDnaRna.py on REP NON ALU and NON REP sites using stringent criteria to recover RNAseq reads harboring reference mismatches:</b>
 
