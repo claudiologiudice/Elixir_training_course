@@ -63,7 +63,7 @@ $ cp /data/brain/SRRXXXXXXXX/SRRXXXXXXXX.bam* .
 e.g (SRR1086680)
 
 <b>2) Detect all potential RNA variants in your input BAM using the REDItoolDnaRNA.py script:</b>
-$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -o /home/student_<b>X</b>/RNAseq -i /home/student_<b>X</b>/RNAseq/SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -t 4 -c 0,1 -m 0,255 -v 1 -q 0,30 -e -n 0.0 -N 0.0 -u -l -p
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -o /home/student_<b>X</b>/RNAseq -i SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -t 4 -c 0,1 -m 0,255 -v 1 -q 0,30 -e -n 0.0 -N 0.0 -u -l -p
 
 e.g. python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -o /home/student_7/RNAseq -i /home/student_7/RNAseq/SRR1319672.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -t 4 -c 0,1 -m 0,255 -v 1 -q 0,30 -e -n 0.0 -N 0.0 -u -l -p
 
@@ -148,11 +148,11 @@ $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/Table
 
 <b>18) Launch REDItoolDnaRna.py on ALU sites using stringent criteria to recover potential editing candidates:</b>
 
-$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRR1319672.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 5,5 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 1 -n 0.0 -e -T posalu.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -k /data/annotations/nochr -R -o firstalu
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 5,5 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 1 -n 0.0 -e -T posalu.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -k /data/annotations/nochr -R -o firstalu
 
 <b>19) Launch REDItoolDnaRna.py on REP NON ALU and NON REP sites using stringent criteria to recover RNAseq reads harboring reference mismatches:</b>
 
-$ REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i ./RNAseq/SRR1310520_chr21_Aligned.sortedByCoord.out.bam -f /usr/share/course_data/rnaediting/hg19ref/GRCh37.primary_assembly.genome.fa -c 10,10 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 3 -n 0.1 -e -T pos.sorted.gff.gz -w /usr/share/course_data/rnaediting/Gencode_annotation/gencode.v30lift37.chr21.splicesites.txt -k /usr/share/course_data/rnaediting/hg19ref/nochr --reads -R --addP -o first
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 10,10 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 3 -n 0.1 -e -T pos.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -k /data/annotations/nochr --reads -R --addP -o first
 
 <b>20) Launch pblat on RNAseq reads harboring reference mismatches from previous step and select multimapping reads:</b>
 
