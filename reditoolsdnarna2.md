@@ -84,12 +84,14 @@ where $8!="-" selects only variant positions (from column 8 of the output table)
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/rmsk.sorted.gtf.gz -n rmsk -i outTable_XXXXXX.out -o outTable_XXXXXX.out.out.rmsk -u
 
-$ AnnotateTable.py -a /usr/share/course_data/rnaediting/dbsnp/snp151_chr21.sorted.gtf.gz -n snp151 -n snp151 -i outTable_892028847_chr21.out.rmsk -o outTable_892028847_chr21.out.rmsk.snp -u
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/snp151.sorted.gtf.gz -n snp151 -i outTable_XXXXXX.out.rmsk -o outTable_XXXXXX.out.rmsk.snp -u
+
 For detailed AnnotateTable.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#annotatetable-py">click here</a>
 
 <b>9) Create a first set of positions selecting sites supported by at least five RNAseq reads and a single mismatch:</b>
 
-$ selectPositions.py -i outTable_892028847_chr21.out.rmsk.snp -c 5 -v 1 -f 0.0 -o outTable_892028847_chr21.out.rmsk.snp.sel1
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/selectPositions.py -i outTable_XXXXXX.out.rmsk.snp -c 5 -v 1 -f 0.0 -o outTable_XXXXXX.out.rmsk.snp.sel1
+
 For detailed selectPositions.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#selectpositions-py">click here</a>
 
 <b>10) Create a second set of positions selecting sites supported by ≥10 RNAseq reads, three mismatches and minimum editing frequency of 0.1: </b>
