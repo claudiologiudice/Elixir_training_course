@@ -5,7 +5,8 @@ The main steps described during the practice are reported below and can be easil
 <b>Note.</b> Assuming you're student_X, please change X according to your workspace.<br>
 <b>Note2.</b> Choose a GTEX sample from Cerebellum or Artery and copy RNAseq data accordingly from its path to your home folder.<br>
 <b>IMPORTANT!</b> REDItoolDnaRna.py outTable (eg. outTable_892028847) contains 9digit random number, so it usually varies among users and different script launches on the same machine.<br>
-  In case of errors or techincal problems <b>do not hesitate to stop the trainer(s).</b>
+  In case of errors or techincal problems <b>do not hesitate to stop the trainer(s).</b><br>
+  This practical part refers to the protocol <a href="https://www.nature.com/articles/s41596-019-0279-7">here available</a>:
 <div align="center">
 <table>
 <thead>
