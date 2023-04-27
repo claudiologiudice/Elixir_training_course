@@ -42,6 +42,13 @@ The main steps described during the practice are reported below and can be easil
 <td>male normal</td>
 <td>/data/brain/SRR1311771/SRR1311771.bam</td>
 </tr>
+</tr>
+<tr>
+<td>SRR1319672.bam</td>
+<td>Brain - Cerebellum</td>
+<td>male normal</td>
+<td>/data/brain/SRR1319672/SRR1319672.bam</td>
+</tr>  
 </thead>
 </table>
 </div>
