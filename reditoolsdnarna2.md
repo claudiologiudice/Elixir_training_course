@@ -104,11 +104,11 @@ $ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)=="Alu" && $17=="-" && $8!="-")
 
 <b>12) Select REP NON ALU sites from the second set of positions, excluding sites in Simple repeats or Low complexity regions:</b>
 
-$ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)!="Alu" && $15!="-" && $15!="Simple_repeat" && $15!="Low_complexity" && $17=="-" && $8!="-" && $10>=10 && $14<=0.05 && $9>=0.1) print}' outTable_892028847_chr21.out.rmsk.snp.sel2 > outTable_892028847_chr21.out.rmsk.snp.nonalu
+$ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)!="Alu" && $15!="-" && $15!="Simple_repeat" && $15!="Low_complexity" && $17=="-" && $8!="-" && $9>=0.1) print}' outTable_XXXXXX.out.rmsk.snp.sel2 > outTable_XXXXXX.out.rmsk.snp.nonalu
 
 <b>13) Select NON REP sites from the second set of positions:</b>
 
-$ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)!="Alu" && $15=="-" && $17=="-" && $8!="-" && $10>=10 && $14<=0.05 && $9>=0.1) print}' outTable_892028847_chr21.out.rmsk.snp.sel2 > outTable_892028847_chr21.out.rmsk.snp.nonrep
+$ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)!="Alu" && $15=="-" && $17=="-" && $8!="-" && $9>=0.1) print}' outTable_XXXXXX.out.rmsk.snp.sel2 > outTable_XXXXXX.out.rmsk.snp.nonrep
 
 <b>14) Annotate ALU, REP NON ALU and NON REP sites using known editing events from REDIportal:</b>
 
