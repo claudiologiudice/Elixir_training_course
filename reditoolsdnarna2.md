@@ -62,7 +62,7 @@ $ mkdir RNAseq
 $ cp /data/brain/SRRXXXXXXXX/SRRXXXXXXXX.bam* .
 e.g (SRR1086680)
 
-<b>2) Detect all potential RNA variants in your input BAM using the REDItoolDnaRNA.py script:</b>
+<b>3) Detect all potential RNA variants in your input BAM using the REDItoolDnaRNA.py script:</b>
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -o /home/student_<b>X</b>/RNAseq -i SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -t 4 -c 0,1 -m 0,255 -v 1 -q 0,30 -e -n 0.0 -N 0.0 -u -l -p
 
 e.g. python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -o /home/student_7/RNAseq -i /home/student_7/RNAseq/SRR1319672.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -t 4 -c 0,1 -m 0,255 -v 1 -q 0,30 -e -n 0.0 -N 0.0 -u -l -p
@@ -71,7 +71,7 @@ For detailed REDItoolDnaRna.py options <a href="https://github.com/BioinfoUNIBA/
 
 Note. Since we are not using WGS as input, REDItoolDnaRNA.py will work as REDItoolDenovo.py, another Reditools package <br>script that has been conceived to predict potential RNA editing events using <b>RNA-Seq data alone and without any a priori <br>knowledge about genome information</b>.
 
-<b>3) Exclude invariant positions (RNAseq position showing no variations respect to the genome reference):</b>
+<b>4) Exclude invariant positions (RNAseq position showing no variations respect to the genome reference):</b>
 $ awk 'FS="\t" {if ($8!="-") print}' DnaRna_XXXXXXX/outTable_XXXXXX > outTable_XXXXXX.out
 
 where $8!="-" selects only variant positions (from column 8 of the output table)
@@ -80,7 +80,7 @@ where $8!="-" selects only variant positions (from column 8 of the output table)
 <img src="img4.png"></img>
 </div>
 
-<b>8) Annotate positions using RepeatMasker and dbSNP annotations:</b>
+<b>5) Annotate positions using RepeatMasker and dbSNP annotations:</b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/rmsk.sorted.gtf.gz -n rmsk -i outTable_XXXXXX.out -o outTable_XXXXXX.out.out.rmsk -u
 
@@ -88,29 +88,29 @@ $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/Annot
 
 For detailed AnnotateTable.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#annotatetable-py">click here</a>
 
-<b>9) Create a first set of positions selecting sites supported by at least five RNAseq reads and a single mismatch:</b>
+<b>6) Create a first set of positions selecting sites supported by at least five RNAseq reads and a single mismatch:</b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/selectPositions.py -i outTable_XXXXXX.out.rmsk.snp -c 5 -v 1 -f 0.0 -o outTable_XXXXXX.out.rmsk.snp.sel1
 
 For detailed selectPositions.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#selectpositions-py">click here</a>
 
-<b>10) Create a second set of positions selecting sites supported by ≥10 RNAseq reads, three mismatches and minimum editing frequency of 0.1: </b>
+<b>7) Create a second set of positions selecting sites supported by ≥10 RNAseq reads, three mismatches and minimum editing frequency of 0.1: </b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/selectPositions.py -i outTable_XXXXXX.out.rmsk.snp -c 10 -v 3 -f 0.1 -o outTable_XXXXXX.out.rmsk.snp.sel2
 
-<b>11) Select ALU sites from the ﬁrst set of positions:</b>
+<b>8) Select ALU sites from the ﬁrst set of positions:</b>
 
 $ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)=="Alu" && $17=="-" && $8!="-") print}' outTable_XXXXXX.out.rmsk.snp.sel1 > outTable_XXXXXX.out.rmsk.snp.alu
 
-<b>12) Select REP NON ALU sites from the second set of positions, excluding sites in Simple repeats or Low complexity regions:</b>
+<b>9) Select REP NON ALU sites from the second set of positions, excluding sites in Simple repeats or Low complexity regions:</b>
 
 $ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)!="Alu" && $15!="-" && $15!="Simple_repeat" && $15!="Low_complexity" && $17=="-" && $8!="-" && $9>=0.1) print}' outTable_XXXXXX.out.rmsk.snp.sel2 > outTable_XXXXXX.out.rmsk.snp.nonalu
 
-<b>13) Select NON REP sites from the second set of positions:</b>
+<b>10) Select NON REP sites from the second set of positions:</b>
 
 $ awk 'FS="\t" {if ($1!="chrM" && substr($16,1,3)!="Alu" && $15=="-" && $17=="-" && $8!="-" && $9>=0.1) print}' outTable_XXXXXX.out.rmsk.snp.sel2 > outTable_XXXXXX.out.rmsk.snp.nonrep
 
-<b>14) Annotate ALU, REP NON ALU and NON REP sites using known editing events from REDIportal:</b>
+<b>11) Annotate ALU, REP NON ALU and NON REP sites using known editing events from REDIportal:</b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/atlas.gtf.gz -n ed -k R -c 1 -i outTable_XXXXXX.out.rmsk.snp.alu -o outTable_XXXXXX.out.rmsk.snp.alu.ed -u
 
@@ -118,7 +118,7 @@ $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/Annot
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/AnnotateTable.py -a /data/annotations/atlas.gtf.gz -n ed -k R -c 1 -i outTable_XXXXXX.out.rmsk.snp.nonrep -o outTable_XXXXXX.out.rmsk.snp.nonrep.ed -u
 
-<b>15) Extract known editing events ($19=="ed" selects known RNA editing events) from ALU, REP NON ALU and NON REP sites:</b>
+<b>12) Extract known editing events ($19=="ed" selects known RNA editing events) from ALU, REP NON ALU and NON REP sites:</b>
 
 $ mv outTable_XXXXXX.out.rmsk.snp.alu.ed alu
 
@@ -130,7 +130,7 @@ $ cat alu nonalu nonrep > alu-nonalu-nonrep
 
 $ awk 'FS="\t" {if ($19=="ed") print}' alu-nonalu-nonrep > knownEditing 
 
-<b>16) Convert editing candidates ($19!="ed" selects novel RNA editing events.) in REP NON ALU and NON REP sites in GFF format for further filtering:</b>
+<b>13) Convert editing candidates ($19!="ed" selects novel RNA editing events.) in REP NON ALU and NON REP sites in GFF format for further filtering:</b>
 
 $ cat nonalu nonrep > nonalu-nonrep
 
@@ -140,27 +140,27 @@ $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/Table
 
 For detailed TableToGFF.py options <a href="https://github.com/BioinfoUNIBA/REDItools/blob/master/README_1.md#tabletogff-py-new-in-version-1-0-3">click here</a>
 
-<b>17) Convert editing candidates in ALU sites in GFF format for further filtering:</b>
+<b>14) Convert editing candidates in ALU sites in GFF format for further filtering:</b>
 
 $ awk 'FS="\t" {if ($19!="ed") print}' alu > posalu.txt
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/TableToGFF.py -i posalu.txt -s -t -o posalu.gff
 
-<b>18) Launch REDItoolDnaRna.py on ALU sites using stringent criteria to recover potential editing candidates:</b>
+<b>15) Launch REDItoolDnaRna.py on ALU sites using stringent criteria to recover potential editing candidates:</b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 5,5 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 1 -n 0.0 -e -T posalu.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -k /data/annotations/nochr -R -o firstalu
 
-<b>19) Launch REDItoolDnaRna.py on REP NON ALU and NON REP sites using stringent criteria to recover RNAseq reads harboring reference mismatches:</b>
+<b>16) Launch REDItoolDnaRna.py on REP NON ALU and NON REP sites using stringent criteria to recover RNAseq reads harboring reference mismatches:</b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRRXXXXXXX.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 10,10 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 3 -n 0.1 -e -T pos.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -k /data/annotations/nochr --reads -R --addP -o first
 
-<b>20) Launch pblat on RNAseq reads harboring reference mismatches from previous step and select multimapping reads:</b>
+<b>17) Launch pblat on RNAseq reads harboring reference mismatches from previous step and select multimapping reads:</b>
 
 $ pblat -t=dna -q=rna -stepSize=5 -repMatch=2253 -minScore=20 -minIdentity=0 /data/annotations/GRCh37.primary_assembly.genome.fa first/DnaRna_506544611/outReads_506544611 reads.psl
 
 $ ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/readPsl.py reads.psl badreads.txt
 
-<b>21) Extract RNAseq reads harboring reference mismatches from Step 19 and remove duplicates:</b>
+<b>18) Extract RNAseq reads harboring reference mismatches from Step 19 and remove duplicates:</b>
   
 $ sort -k1,1 -k2,2n -k3,3n first/DnaRna_XXXXXXX/outPosReads_XXXXXX | mergeBed > bed
 
@@ -176,17 +176,20 @@ $ samtools markdup -r -@ 4 SRRXXXXXXX_bed_ns_fx.bam_st.bam SRRXXXXXXX_bed_dedup.
 
 $ samtools index SRRXXXXXXX_bed_dedup.bam
 
-<b>22) Re-run REDItoolDnaRna.py on REP NON ALU and NON REP sites using stringent criteria, deduplicated reads and mis-mapping info:</b>
+<b>19) Re-run REDItoolDnaRna.py on REP NON ALU and NON REP sites using stringent criteria, deduplicated reads and mis-mapping info:</b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/main/REDItoolDnaRna.py -s 2 -g 2 -S -t 4 -i SRRXXXXXXX_bed_dedup.bam -f /data/annotations/GRCh37.primary_assembly.genome.fa -c 10,10 -q 30,30 -m 255,255 -O 5,5 -p -u -a 11-6 -l -v 3 -n 0.1 -e -T pos.sorted.gff.gz -w /data/annotations/gencode.v30lift37.splicesites.txt -R -k /data/annotations/nochr -b badreads.txt --rmIndels -o second
   
-<b>23) Collect filtered ALU, REP NON ALU and NON REP sites:</b>
+<b>20) Collect filtered ALU, REP NON ALU and NON REP sites:</b>
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/NPscripts/collect_editing_candidates.py 
 
 $ sort -k1,1 -k2,2n editing.txt > editing_sorted.txt
 
-<b>24) Inspect the distribution of editing candidates to look at A-to-I enrichment: </b>
+Note. awk 'FS="\t" {if (($19=="ed") && ($8=="AG"||$8=="TC")) print}' editing_sorted.txt 
+Note2. awk 'FS="\t" {if (($19!="ed") && ($8=="AG"||$8=="TC")) print}' editing_sorted.txt 
 
-$ get_Statistics.py
+<b>21) Inspect the distribution of editing candidates to look at A-to-I enrichment: </b>
+
+$ python ../corso_epitrascrittomica/data_reditools/src/REDItools/NPscripts/get_Statistics.py
   
