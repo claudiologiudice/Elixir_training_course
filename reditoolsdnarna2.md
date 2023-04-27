@@ -59,6 +59,7 @@ The main steps described during the practice are reported below and can be easil
 $ mkdir RNAseq
 
 <b>2) Enter the folder and copy the Aligned RNAseq reads (BAM format) from /data to it</b>
+$ cd RNAseq
 $ cp /data/brain/SRRXXXXXXXX/SRRXXXXXXXX.bam* .
 e.g (SRR1086680)
 
