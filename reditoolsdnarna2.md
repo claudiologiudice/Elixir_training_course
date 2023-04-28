@@ -137,7 +137,7 @@ $ awk 'FS="\t" {if ($19=="ed") print}' alu-nonalu-nonrep > knownEditing
 
 $ cat nonalu nonrep > nonalu-nonrep
 
-$ awk 'FS="\t" {if ($19!="ed") print}' nonalu-nonrep > pos.txt
+$ awk -F"\t" '{if ($19!="ed") print}' nonalu-nonrep > pos.txt
 
 $ python ../corso_epitrascrittomica/data_reditools/src/REDItools/accessory/TableToGFF.py -i pos.txt -s -t -o pos.gff
 
